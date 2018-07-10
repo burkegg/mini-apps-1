@@ -11,14 +11,30 @@ $(document).ready(function(){
 //   dataType: 'application/json',
 // });
   
+// $.ajax({
+//   type: "GET",
+//   url: 'http://localhost:3000/data',
+//   //datatype: ''    // the type you expect back.  it might guess for me.
+//   success: function(error, response) {console.log(error);}
+// });
+
+$.ajax({
+  type: "POST",
+  url: 'http://localhost:3000/data',
+  datatype: "application/json",
+  contentType: "application/json",
+  data: '{"firstName":"RRRRRR","lastName":"GRRRRERERETson","county":"WHEREEEEEE","city":"San Francisco","role":"Broker/Sales Person","sales":7500000,"children":[]}',
+
+})
+// }
+console.log('inside js');
+});
+
 $.ajax({
   type: "GET",
   url: 'http://localhost:3000/data',
   //datatype: ''    // the type you expect back.  it might guess for me.
   success: function(error, response) {console.log(error);}
-});
-// }
-console.log('inside js');
 });
 // $.get("localhost:3000/data", function(){
 //   console.log('got?');

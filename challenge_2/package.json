@@ -1,0 +1,27 @@
+{
+  "name": "challenge_2",
+  "version": "1.0.0",
+  "description": "\"a fun program to generate CSV reports\"",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "nodemon": "^1.18.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "\"\"",
+    "start": "node ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burkegg/hrsf98-mini-apps-1.git"
+  },
+  "author": "burke",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/burkegg/hrsf98-mini-apps-1/issues"
+  },
+  "homepage": "https://github.com/burkegg/hrsf98-mini-apps-1#readme"
+}
+ 

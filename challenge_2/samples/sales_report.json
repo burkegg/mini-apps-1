@@ -45,3 +45,16 @@
     }
   ]
 };
+
+
+/*
+string curl post:
+
+"{"firstName":"Beth","lastName":"Johnson","county":"San Francisco","city":"San Francisco","role":"Broker/Sales Person","sales":7500000,"children":[]}"
+
+curl -X POST -H "Content-Type: application/json" -d '{"Name":"bob"}' http://localhost:3000
+
+
+curl -X POST -H "Content-Type: application/json" -d "{"firstName":"Beth","lastName":"Johnson","county":"San Francisco","city":"San Francisco","role":"Broker/Sales Person","sales":7500000,"children":[]}"
+ http://localhost:3000
+*/

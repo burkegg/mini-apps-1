@@ -20,7 +20,7 @@ app.use(function(req, res, next){
   console.log(req.method, '  ', req.path);
   next();
 })
-
+ 
 var flatten = function(obj) {
     let str = '';
     for (let key in obj){

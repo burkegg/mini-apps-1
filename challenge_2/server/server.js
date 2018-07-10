@@ -21,6 +21,9 @@ app.use(function(req, res, next){
   next();
 })
  
+app.use('/', express.static(path.join(__dirname, '../client')));
+app.use('/', express.static(path.join(__dirname, '../node_modules/jquery/dist/')));
+
 var flatten = function(obj) {
     let str = '';
     for (let key in obj){
@@ -39,9 +42,9 @@ var flatten = function(obj) {
 }
 
 
-app.get('/', (req, res) => res.send(csvData));
+app.get('/data', (req, res) => res.send(csvData));
 
-app.post('/', (req, res) => {
+app.post('/data', (req, res) => {
   console.log('************ req.body', req.body);
   data.push(req.body);
   csvData += flatten(req.body);

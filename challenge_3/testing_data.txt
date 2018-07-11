@@ -18,3 +18,8 @@ zip2: 242424
 
 
 '{"name":"SOMENAME","email":"anemeail","password":"somepass","add1":"someadd1","add2":"secondline","city":"thecity","state":"thestate","zip":43324,"phone":"5101231234","card":"44444444444","exp":"12/01/21","cvv":123,"zip2":242424}'
+
+
+
+babel client --out-dir public --presets=env,react --source-maps inline --watch
+

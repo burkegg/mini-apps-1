@@ -12,9 +12,7 @@ $(document).ready(function(){
       url: 'http://localhost:3000/data',
       //datatype: ''    // the type you expect back.  it might guess for me.
       success: function(response) {
-        console.log(response);
         currentTasks = response;
-        // post to DOM
         $('#csv').text(currentTasks);
       }
     });
@@ -35,7 +33,6 @@ $(document).ready(function(){
 
   $("form").on("submit", function(event) {
     event.preventDefault(); 
-    //console.log(event);
     let dataToPost = $('#reports').val()
     postIt(dataToPost);
     getAll();

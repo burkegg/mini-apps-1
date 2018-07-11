@@ -3,13 +3,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const html = require('http');
 const path = require('path');
-var sampleOutput = `firstName,lastName,county,city,role,sales \n
-'Joshie,Wyattson,San Mateo,San Mateo,Broker,1000000 \n
-Beth Jr.,Johnson,San Mateo,Pacifica,Manager,2900000 \n
-Smitty,Won,San Mateo,Redwood City,Sales Person,4800000 \n
-Allen,Price,San Mateo,Burlingame,Sales Person,2500000 \n
-Beth,Johnson,San Francisco,San Francisco,Broker/Sales Person,7500000`
-
 
 var data = [];
 var csvData = '';
@@ -32,7 +25,7 @@ var flatten = function(obj) {
         }
     }
     str = str.slice(0, str.length-1);
-    str = str + '\n';
+    str = str + '\n' + '';
     if (obj.children) {
         for (let idx = 0; idx < obj.children.length; idx++) {
             str += flatten(obj.children[idx]);

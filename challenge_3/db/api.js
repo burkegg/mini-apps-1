@@ -3,7 +3,6 @@ var someParams = ['SOMENAME', 'anemeail', 'somepass', 'someadd1', 'secondline', 
 
 var addEntry = db.addAccount(someParams);
 
-
 // insert and select from database from here.
 
 var getAll = db.allFromDB;

@@ -35,7 +35,7 @@ var flatten = function(obj) {
   }
   return str;
 }
-
+  
 var toArray = function(csvStr) {
   let arrayOut = [];
   arrayOut = csvStr.split('&&&');

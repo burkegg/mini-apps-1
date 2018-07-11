@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const html = require('http');
 const path = require('path');
+var db = require('../db/dbAPI')
 
 var data = [];
 var csvData = '';
@@ -52,14 +53,28 @@ var toArray = function(csvStr) {
 
 
 
-app.get('/data', (req, res) => res.send(data));
+app.get('/data', (req, res) => {
+  //res.send(data)
+  db.getAll(function(err, data){
+    if (err){
+      console.log('error getting');
+      return;
+    }
+    res.send(data);
+  })
+});
 
 app.post('/data', (req, res) => {
-  console.log('************ req.body', req.body);
   data.push(req.body);
   csvData += flatten(req.body);
   data = toArray(csvData);
-  //console.log('------------ body', req);
+  db.add(csvData, function(error, data){
+    if (error){
+      console.log('error');
+      return;
+    }
+    res.sendStatus(201);
+  })
   res.send(' posted ?', 201);
 });
 

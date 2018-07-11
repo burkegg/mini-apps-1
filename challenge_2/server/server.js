@@ -7,7 +7,7 @@ const path = require('path');
 var data = [];
 var csvData = '';
 app.use(bodyParser.json());
-
+var counter = 1;
 
 app.use(function(req, res, next){
   console.log(req.method, '  ', req.path);
@@ -17,8 +17,6 @@ app.use(function(req, res, next){
 app.use('/', express.static(path.join(__dirname, '../client')));
 app.use('/', express.static(path.join(__dirname, '../node_modules/jquery/dist/')));
 
-
-
 var flatten = function(obj) {
   let str = '';
   for (let key in obj){
@@ -27,20 +25,31 @@ var flatten = function(obj) {
       }
   }
   str = str.slice(0, str.length-1);
-  str = str + '&&&';
+  str = counter.toString() + '  ' + str + '&&&';
+  counter++;
   if (obj.children) {
       for (let idx = 0; idx < obj.children.length; idx++) {
           str += flatten(obj.children[idx]);
       }
   }
   return str;
-}
+} 
   
+  
+
 var toArray = function(csvStr) {
   let arrayOut = [];
   arrayOut = csvStr.split('&&&');
   return arrayOut;
 }
+
+
+
+
+
+
+
+
 
 
 app.get('/data', (req, res) => res.send(data));

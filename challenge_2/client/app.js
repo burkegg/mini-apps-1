@@ -12,12 +12,14 @@ $(document).ready(function(){
       url: 'http://localhost:3000/data',
       //datatype: ''    // the type you expect back.  it might guess for me.
       success: function(response) {
-
+        $insert = $("<div id = 'data'>");
         for (let idx = 0; idx < response.length; idx++) {
           var myDiv = $("<div>").text(response[idx]);
-          $('#csv').append(myDiv);
+          $insert.append(myDiv);
         }
+        $('#csv').html($insert);
       }
+
     });
   }
 
@@ -37,6 +39,9 @@ $(document).ready(function(){
     event.preventDefault(); 
     //console.log(event);
     let dataToPost = $('#reports').val()
+    if (dataToPost === '') {
+      return;
+    }
     postIt(dataToPost);
     getAll();
     $("#reports").val('');

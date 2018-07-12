@@ -25,11 +25,16 @@ class App extends React.Component{
       },
       formNum: 1,
     }
-    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleUpdate(e) {
-    console.log('inside handleUpdate');
+  handleSubmit(e) {
+    console.log('inside handleSubmit');
+    console.log(e.target);
+    // this.setState({
+    //   formNum : 2
+    // })
+    console.log(this.state.acct);
   };
 
 
@@ -38,26 +43,24 @@ class App extends React.Component{
     if (this.state.formNum ===1) {
       display =       
         <div>
-          <Form1 handleUpdate = {this.handleUpdate}/>
+          <Form1 handleSubmit = {this.handleSubmit}/>
         </div>;
     } else if (this.state.formNum ===2) {
       display =       
         <div>
-          <Form2 handleUpdate = {this.handleUpdate}/>
+          <Form2 handleSubmit = {this.handleSubmit}/>
         </div>;
     } else if (this.state.formNum ===3) {
       display =       
         <div>
-          <Form3 handleUpdate = {this.handleUpdate}/>
+          <Form3 handleSubmit = {this.handleSubmit}/>
         </div>;
     } else if (this.state.formNum ===4) {
       display =       
         <div>
-          <Form4 handleUpdate = {this.handleUpdate}/>
+          <Form4 handleFinal = {this.handleFinal}/>
         </div>;
     } 
-
-
 
     return(
       <div>
@@ -79,30 +82,34 @@ class Form1 extends React.Component{
         password: '',
       }, 
     };
-    
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
 
   };
+
+  handleSubmit(event){
+    console.log (event.target);
+  }
   handleInputChange(event) {
     var target = event.target;
     var value = target.value;
     var name = target.name;
-
+ 
     this.setState({
       [name]: value,
     })
-    console.log(this.state);
   }
+
   render(){
     return(
-
-      <form>
+     <form onSubmit = {this.handleSubmit}>
         <label>
           Username:
           <input 
             name = 'name'
             type = 'text'
             onChange = {this.handleInputChange} 
+            value = {this.state.name}
           />
         </label>
         <br />
@@ -112,6 +119,7 @@ class Form1 extends React.Component{
             name = 'email'
             type = 'text'
             onChange = {this.handleInputChange} 
+            value = {this.state.email}
           />
         </label>
         <br />
@@ -121,16 +129,16 @@ class Form1 extends React.Component{
             name = 'password'
             type = 'text'
             onChange = {this.handleInputChange} 
+            value = {this.state.password}
           />
         </label>
-
-
+        <br />
+        <input type = "submit" value = "Submit"/>
       </form>
 
     )
   }
 };
-
 
 class Form2 extends React.Component{
   constructor(props){
@@ -140,7 +148,6 @@ class Form2 extends React.Component{
   render() {
     return(
       <h1>Thisisform 2</h1>
-
     )
   }
 };

@@ -23,10 +23,14 @@ class App extends React.Component{
         cvv: 123,
         zip2: 242424
       },
-      formNum: 4,
-
+      formNum: 1,
     }
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
+
+  handleUpdate(e) {
+    console.log('inside handleUpdate');
+  };
 
 
   render(){
@@ -34,26 +38,24 @@ class App extends React.Component{
     if (this.state.formNum ===1) {
       display =       
         <div>
-          <Form1 />
+          <Form1 handleUpdate = {this.handleUpdate}/>
         </div>;
     } else if (this.state.formNum ===2) {
       display =       
         <div>
-          <Form2 />
+          <Form2 handleUpdate = {this.handleUpdate}/>
         </div>;
     } else if (this.state.formNum ===3) {
       display =       
         <div>
-          <Form3 />
+          <Form3 handleUpdate = {this.handleUpdate}/>
         </div>;
     } else if (this.state.formNum ===4) {
       display =       
         <div>
-          <Form4 />
+          <Form4 handleUpdate = {this.handleUpdate}/>
         </div>;
     } 
-
-
 
 
 
@@ -72,16 +74,58 @@ class Form1 extends React.Component{
     super(props);
     this.state = {
       acct: {
-        name: 'SOMENAME',
-        email: 'anemeail',
-        password: 'somepass',
-      }
-    }
-  }
+        name: '',
+        email: '',
+        password: '',
+      }, 
+    };
+    
+    this.handleInputChange = this.handleInputChange.bind(this);
 
+  };
+  handleInputChange(event) {
+    var target = event.target;
+    var value = target.value;
+    var name = target.name;
+
+    this.setState({
+      [name]: value,
+    })
+    console.log(this.state);
+  }
   render(){
     return(
-      <h1>Thisisform 1</h1>
+
+      <form>
+        <label>
+          Username:
+          <input 
+            name = 'name'
+            type = 'text'
+            onChange = {this.handleInputChange} 
+          />
+        </label>
+        <br />
+        <label>
+          Email:
+          <input 
+            name = 'email'
+            type = 'text'
+            onChange = {this.handleInputChange} 
+          />
+        </label>
+        <br />
+        <label>
+          Email:
+          <input 
+            name = 'password'
+            type = 'text'
+            onChange = {this.handleInputChange} 
+          />
+        </label>
+
+
+      </form>
 
     )
   }
@@ -128,27 +172,6 @@ class Form4 extends React.Component{
     )
   }
 };
-
-
-
-
-
-        // <div>
-        //   <Form1 />
-        // </div>
-
-        // <div>
-        //   <Form2 />
-        // </div>
-
-        // <div>
-        //   <Form3 />
-        // </div>
-
-        // <div>
-        //   <Form4 />
-        // </div>
-
 
 
 
